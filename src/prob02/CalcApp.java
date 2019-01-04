@@ -12,6 +12,28 @@ public class CalcApp {
 		int b = scanner.nextInt();
 		String operation = scanner.next();
 		
-		/* operation에 따라 4칙 연산 객체를 생성하고 caculate 메서드를 호출합니다. */
+		
+		if(operation.equals("+"))
+		{
+			Add add = new Add();
+			System.out.println(add.calculate(a, b));
+		}
+		else if(operation.equals("-"))
+		{
+			Sub add = new Sub();
+			System.out.println(add.calculate(a,b));
+		}
+		else if(operation.equals("*"))
+		{
+			Mul add = new Mul();
+			System.out.println(add.calculate(a,b));
+		}
+		else if(operation.equals("/"))
+		{
+			Div add = new Div();
+			System.out.println(add.calculate(a,b));
+		}
+		
+		scanner.close();
 	}
 }

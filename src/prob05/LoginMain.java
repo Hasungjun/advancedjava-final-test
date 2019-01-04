@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class LoginMain {
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		
@@ -19,11 +20,21 @@ public class LoginMain {
 		System.out.println("비밀번호를 입력하시오 : ");
 		String password = scanner.nextLine();
 		
-		/*
-		 *  로그인 처리 부분을 완성 합니다.
-		 */
+		User loginUser = new User(id,password);
 		
-
+		try {
+			login(joinUsers,loginUser);
+		} catch (UserNotFoundException e) {
+			System.out.println("사용자를 찾을 수 없습니다.");
+		return;
+		} catch (PasswordDismatchException e) {
+			System.out.println("비밀번호가 틀렸습니다.");
+		return;
+		}
+		
+		System.out.println("로그인 성공");
+		
+		scanner.close();
 	}
 	
 	public static void login(List<User> users, User user ) throws UserNotFoundException, PasswordDismatchException {
